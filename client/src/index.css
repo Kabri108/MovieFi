@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+input:focus,
+textarea:focus,
+select:focus{
+    outline:0 !important;
+    box-shadow: none !important;
+}
+.hoveres{
+    @apply hidden
+}
+/* 
+.flex-col{
+    @apply flex flex-col justify-center items-center;
+}
+
+.flex-row{
+    @apply flex flex-row justify-center items-center;
+}
+
+.flex-btn{
+    @apply flex justify-between items-center
+}
+
+.transitions{
+    @apply transition duration-300 ease-in
+}
+
+.zIndex{
+    z-index: 10000;
+} */
