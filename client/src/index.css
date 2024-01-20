@@ -3,22 +3,28 @@
 @tailwind utilities;
 
 
-
+html{
+    font-weight: normal;
+}
 input:focus,
 textarea:focus,
 select:focus{
     outline:0 !important;
     box-shadow: none !important;
 }
+
+.liner-bg{
+    background: linear-gradient(269.82deg,#07091c00 0.17%,#080a1ad6 99.87%)
+}
 .hoveres{
     @apply hidden
 }
-/* 
-.flex-col{
+
+.flex-colo{
     @apply flex flex-col justify-center items-center;
 }
 
-.flex-row{
+.flex-rows{
     @apply flex flex-row justify-center items-center;
 }
 
@@ -32,4 +38,4 @@ select:focus{
 
 .zIndex{
     z-index: 10000;
-} */
+} 

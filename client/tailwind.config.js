@@ -18,8 +18,8 @@ export default {
         xs:'475px'
       },
       colors:{
-        main:'#080A1A',
-        subMain:'#F20000',
+        main:'#0f1014',
+        subMain:'#FFA500',
         dry:'#0B0F29',
         star:'#FFB000',
         text:'#C0C0C0',
@@ -28,6 +28,6 @@ export default {
       }
     },
   },
-  plugins: [require('@tailwindcss/line-clamp')],
+  // plugins: [require('@tailwindcss/line-clamp')],
 }
 
