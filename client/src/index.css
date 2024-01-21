@@ -19,7 +19,9 @@ select:focus{
 .hoveres{
     @apply hidden
 }
-
+.hovered:hover .hoveres{
+    @apply flex-colo
+}
 .flex-colo{
     @apply flex flex-col justify-center items-center;
 }

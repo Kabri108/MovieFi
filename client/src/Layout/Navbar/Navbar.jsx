@@ -13,7 +13,7 @@ const Navbar = () => {
       <div className="container mx-auto py-6 px-2 lg:grid gap-10 grid-cols-7 justify-between items-center">
         <div className='col-span-1 lg:block hidden'>
           <Link to='/'>
-           <img src="/images/logo.png" alt="logo" className='w-25 h-8 object-contain' />
+           <img src="/images/logo.png" alt="logo" className=' w-full h-14' />
           </Link>
         </div>
         <div className=' col-span-3'>
@@ -30,7 +30,7 @@ const Navbar = () => {
             <FaRegUserCircle className='w-8 h-8'/>
           </NavLink>
           <NavLink to='/login' className={`${Hover} relative`}>
-            <FaHeart className='w-6 h-6'/>
+            <FaHeart className='w-6 h-6 hover:subMain'/>
             <div className='w-5 h-5 flex-colo rounded-full text-xs bg-subMain text-white absolute -top-5 -right-1'>
               2
             </div>

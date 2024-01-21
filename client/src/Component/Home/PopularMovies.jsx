@@ -1,7 +1,6 @@
 import React from 'react'
 import Title from '../Title'
 import { IoMdFilm } from 'react-icons/io';
-import { FaStar } from 'react-icons/fa';
 import Movie from '../Movie';
 import { Movies } from '../../Data/MovieData';
 const PopularMovies = () => {
