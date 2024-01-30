@@ -41,3 +41,7 @@ select:focus{
 .zIndex{
     z-index: 10000;
 } 
+
+.sliderbtn{
+    @apply  text-white bg-opacity-30  bg-black hover:bg-dry rounded w-8 h-8 flex-colo transitions text-xl 
+}

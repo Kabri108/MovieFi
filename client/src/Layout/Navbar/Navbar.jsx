@@ -13,7 +13,7 @@ const Navbar = () => {
       <div className="container mx-auto py-6 px-2 lg:grid gap-10 grid-cols-7 justify-between items-center">
         <div className='col-span-1 lg:block hidden'>
           <Link to='/'>
-           <img src="/images/logo.png" alt="logo" className=' w-full h-14' />
+           <img src="/images/logo.png" alt="logo" className=' w-full h-12' />
           </Link>
         </div>
         <div className=' col-span-3'>

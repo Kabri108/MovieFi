@@ -9,8 +9,9 @@ export default {
     extend: {
       height:{
         header:'560px',
-        rate:'400px'
+        rate:'300px'
       },
+      
       fontSize:{
         h1:'2.6rem'
       },

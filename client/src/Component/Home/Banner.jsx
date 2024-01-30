@@ -4,6 +4,8 @@ import { Movies } from '../../Data/MovieData'
 import { Autoplay } from 'swiper/modules'
 import FlexMovieItems from '../FlexMovieItems';
 import { Link } from 'react-router-dom';
+import { Mousewheel, Pagination } from 'swiper/modules';
+import 'swiper/css/pagination'
 const Banner = () => {
   return (
     <div className='relative w-full'>
@@ -12,9 +14,13 @@ const Banner = () => {
         slidesPerView={1}
         loop={true}
         speed={1000}
-        modules={[Autoplay]}
+        modules={[Autoplay,Mousewheel,Pagination]}
         autoplay={{ delay: 4000, disableOnInteraction: false }}
-        className='w-full xl:h-96 bg-dry h-48'
+        pagination={{
+          clickable: true
+        }}
+        mousewheel={true}
+        className='w-full xl:h-96 bg-dry h-48 mySwiper'
       >
         {
           Movies.slice(0, 6).map((movie, index) => (
