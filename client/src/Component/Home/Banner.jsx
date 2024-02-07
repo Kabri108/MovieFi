@@ -6,6 +6,8 @@ import FlexMovieItems from '../FlexMovieItems';
 import { Link } from 'react-router-dom';
 import { Mousewheel, Pagination } from 'swiper/modules';
 import 'swiper/css/pagination'
+import { FaHeart } from 'react-icons/fa';
+
 const Banner = () => {
   return (
     <div className='relative w-full'>
@@ -36,9 +38,10 @@ const Banner = () => {
                 <div className='flex gap-5 items-center text-dryGray '>
                   <FlexMovieItems movie={movie}/>
                 </div>
-                <div className='flex gap-5 items-center'>
+                <div className='flex flex-row gap-5 items-center'>
                   <Link to={`/movie/${movie.name}`}
-                  className='bg-subMain transitions rounded font-medium px-6 py-2 hover:text-subMain hover:bg-transparent hover:border border-subMain'>Watch</Link>
+                  className='bg-subMain transitions rounded font-medium px-6 py-3 hover:text-subMain hover:bg-transparent hover:border border-subMain text-'>Watch</Link>
+                   <button className='w-12 h-12  flex-colo transitions hover:bg-subMain rounded-lg bg-white bg-opacity-30 text-white '><FaHeart /></button>
                 </div>
               </div>
             </SwiperSlide>

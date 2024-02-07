@@ -19,8 +19,8 @@ export default {
         xs:'475px'
       },
       colors:{
-        main:'#0f1014',
-        subMain:'#FFA500',
+        main:'#080A1A',
+        subMain:'#FFB000',
         dry:'#0B0F29',
         star:'#FFB000',
         text:'#C0C0C0',
