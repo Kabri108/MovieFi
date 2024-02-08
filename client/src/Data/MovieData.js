@@ -314,3 +314,55 @@ export const Movies = [
     // Add more movie objects as needed
   ];
   
+  export const UsersData=[
+    {
+      image:'jd.jpg',
+      name:'Johnny Depp'
+    },
+    {
+      image:'ai.jpg',
+      name:' Al Pacino'
+    },
+    {
+      image:'jd.jpg',
+      name:'Johnny Depp'
+    },
+    {
+      image:'ai.jpg',
+      name:' Al Pacino'
+    },
+    {
+      image:'jd.jpg',
+      name:'Johnny Depp'
+    },
+    {
+      image:'ai.jpg',
+      name:' Al Pacino'
+    },
+    {
+      image:'jd.jpg',
+      name:'Johnny Depp'
+    },
+    {
+      image:'ai.jpg',
+      name:' Al Pacino'
+    },
+    {
+      image:'jd.jpg',
+      name:'Johnny Depp'
+    },
+    {
+      image:'ai.jpg',
+      name:' Al Pacino'
+    },
+    {
+      image:'jd.jpg',
+      name:'Johnny Depp'
+    },
+    {
+      image:'ai.jpg',
+      name:' Al Pacino'
+    },
+    
+    
+  ]

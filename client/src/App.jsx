@@ -5,6 +5,7 @@ import AboutUs from './Screens/AboutUs'
 import NotFound from './Screens/NotFound'
 import MoviesPage from './Screens/Movies'
 import SingleMovie from './Screens/SingleMovie'
+import WatchPage from './Screens/WatchPage'
 
 const App = () => {
   return (
@@ -13,6 +14,7 @@ const App = () => {
         <Route path='/aboutUs' element={<AboutUs/>}/>
         <Route path='/movies' element={<MoviesPage/>}/>
         <Route path='/movie/:id' element={<SingleMovie/>}/>
+        <Route path='/watch/:id' element={<WatchPage/>}/>
         <Route path='*' element={<NotFound/>}/>
       </Routes>
   )
