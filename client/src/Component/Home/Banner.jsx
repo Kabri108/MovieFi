@@ -10,7 +10,7 @@ import { FaHeart } from 'react-icons/fa';
 
 const Banner = () => {
   return (
-    <div className='relative w-full'>
+    <div className='relative w-full mx-2'>
       <Swiper
         direction='vertical'
         slidesPerView={1}
@@ -22,7 +22,7 @@ const Banner = () => {
           clickable: true
         }}
         mousewheel={true}
-        className='w-full xl:h-96 bg-dry h-48 mySwiper'
+        className='w-full xl:h-96 lg:h-rate bg-dry h-48 mySwiper'
       >
         {
           Movies.slice(0, 6).map((movie, index) => (

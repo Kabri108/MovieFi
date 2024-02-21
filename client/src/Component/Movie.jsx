@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 const Movie = ({movie}) => {
   return (
     <>
-    <div className='border border-border p-1 hover:scale-95 transitions relative rounded overflow-hidden '>
+    <div className='border border-border p-1 hover:scale-95 transitions relative rounded overflow-hidden h-rate '>
         <Link to={`/movie/${movie?.name}`} className='w-full'>
         <img src={`/images/movies/${movie?.image}`} 
         alt={movie.name}
