@@ -6,6 +6,7 @@ import NotFound from './Screens/NotFound'
 import MoviesPage from './Screens/Movies'
 import SingleMovie from './Screens/SingleMovie'
 import WatchPage from './Screens/WatchPage'
+import Login from './Screens/Login'
 
 const App = () => {
   return (
@@ -16,6 +17,7 @@ const App = () => {
         <Route path='/movie/:id' element={<SingleMovie/>}/>
         <Route path='/watch/:id' element={<WatchPage/>}/>
         <Route path='*' element={<NotFound/>}/>
+        <Route path='/login' element={<Login/>}/>
       </Routes>
   )
 }

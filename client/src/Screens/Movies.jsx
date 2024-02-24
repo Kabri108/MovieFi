@@ -12,7 +12,7 @@ function MoviesPage() {
   }
   return (
    <Layout>
-    <div className='min-height-screen container mx-auto px-2 my-2'>
+    <div className='min-height-screen container mx-auto px-2 my-2 '>
       <Filters/>
       <p className='text-lg font-medium my-6'>
         Total <span className=' font-bold text-subMain '> 

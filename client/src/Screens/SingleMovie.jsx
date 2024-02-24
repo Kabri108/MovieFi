@@ -12,8 +12,8 @@ function SingleMovie() {
   return (
     <Layout>
       <MovieInfo movie={movie}/>
-      <div className='container mx-auto min-h-screen px-2 my-6  '>
-        <MovieCasts/>
+      <div className='container mx-auto min-h-screen px-2 my-6 gap-2  '>
+        {/* <MovieCasts/> */}
         <MovieRates/>
       </div>
     </Layout>
