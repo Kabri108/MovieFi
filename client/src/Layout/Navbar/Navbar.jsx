@@ -1,6 +1,7 @@
 import React from 'react'
 import {Link,NavLink} from 'react-router-dom'
 import { FaSearch,FaHeart,FaRegUserCircle } from "react-icons/fa";
+import { TbUserHexagon } from "react-icons/tb";
 
 
 
@@ -27,7 +28,7 @@ const Navbar = () => {
           <NavLink to='/about-us' className={Hover}>About Us</NavLink>
           <NavLink to='/contact-us' className={Hover}>Contact Us</NavLink>
           <NavLink to='/login' className={Hover}>
-            <FaRegUserCircle className='w-8 h-8'/>
+            <TbUserHexagon className='w-8 h-8'/>
           </NavLink>
           <NavLink to='/login' className={`${Hover} relative`}>
             <FaHeart className='w-6 h-6 hover:subMain'/>
