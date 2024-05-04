@@ -4,11 +4,16 @@ const rootReducer=combineReducers({
     //Add your reducers here
     //user reducer
     userLogin:User.userLoginReducer,
-    userRegister:User.user
+    userRegister:User.userRegisterReducer,
 })
 
+//get user info from localStorage
+const userInfoFromStorage= localStorage.getItem("userInfo")? JSON.parse(localStorage.getItem("userInfo"))
+:null;
 //initialState
-const initialState={};
+const initialState={
+    userLogin:{userInfo:userInfoFromStorage}
+};
 export const store=configureStore({
     reducer:rootReducer,
     preloadedState:initialState

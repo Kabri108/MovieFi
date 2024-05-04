@@ -20,7 +20,7 @@ const logoutService=()=>{
 //Login user API call
 
 const loginService=async(user)=>{
-    const {data}=await Axios.post('/user/login',user);
+    const {data}=await Axios.post('users/login',user);
     if(data){
         localStorage.setItem('userInfo',JSON.stringify(data))
     }

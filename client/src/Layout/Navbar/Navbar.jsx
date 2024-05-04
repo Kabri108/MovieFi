@@ -2,10 +2,10 @@ import React from 'react'
 import {Link,NavLink} from 'react-router-dom'
 import { FaSearch,FaHeart,FaRegUserCircle } from "react-icons/fa";
 import { TbUserHexagon } from "react-icons/tb";
-
-
+import {useSelector} from 'react-redux'
 
 const Navbar = () => {
+  const {userInfo}=useSelector((state)=>state.userLogin)
   const hover='hover:text-subMain transitions t-white';
   const Hover=({isActive})=>(isActive? 'text-subMain' : hover)
   return (
@@ -30,7 +30,9 @@ const Navbar = () => {
           <NavLink to='/login' className={Hover}>
             <TbUserHexagon className='w-8 h-8'/>
           </NavLink>
-          <NavLink to='/login' className={`${Hover} relative`}>
+          <NavLink to={
+            userInfo?.isAdmin ? "/dashboard" :userInfo ?"/profile" :"/login"
+          } className={`${Hover} relative`}>
             <FaHeart className='w-6 h-6 hover:subMain'/>
             <div className='w-5 h-5 flex-colo rounded-full text-xs bg-subMain text-white absolute -top-5 -right-1'>
               2

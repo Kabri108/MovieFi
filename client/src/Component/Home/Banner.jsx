@@ -10,9 +10,9 @@ import { FaHeart } from 'react-icons/fa';
 
 const Banner = () => {
   return (
-    <div className='relative w-full mx-2'>
+    <div className='relative w-full px-4 '>
       <Swiper
-        direction='vertical'
+        direction='horizontal'
         slidesPerView={1}
         loop={true}
         speed={1000}
