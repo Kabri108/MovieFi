@@ -8,6 +8,7 @@ import Layout from '../../Layout/Layout';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import toast from 'react-hot-toast'
+import { logoutAction } from '../../Redux/Actions/userActions';
 
 function Sidebar({children}) {
 

@@ -25,8 +25,8 @@ const RegisterValidation =yup.object().shape({
       .string()
       .required('FullName is required')
       .min(3, 'Username must be at least 3 characters long')
-      .max(3, 'FullName must be less than 20 characters')
-      .matches(/^[a-zA-Z]*$/,'Full name must contains only letters')
+      .max(20, 'FullName must be less than 20 characters')
+      .matches(/^[a-z A-Z]*$/,'Full name must contains only letters')
   });
 
 
