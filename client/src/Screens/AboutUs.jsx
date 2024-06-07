@@ -15,25 +15,25 @@ function AboutUs() {
               </h3>
               <div className="mt-3 text-sm leading-8 text-text">
                 <p>
-                  Lorem Ipsum is simply dummy text of the printing and
-                  typesetting industry. Lorem Ipsum has been the industry's
-                  standard dummy text ever since the 1500s, when an unknown
-                  printer took a galley of type and scrambled it to make a type
-                  specimen book. It has survived not only five centuries, but
-                  also the leap into electronic typesetting, remaining
-                  essentially unchanged. It was popularised in the 1960s with
-                  the release of Letraset sheets containing Lorem Ipsum
-                  passages, and more recently with desktop publishing software
-                  like Aldus PageMaker including versions of Lorem Ipsum.
-                </p>
-                <p>
-                  Lorem Ipsum is simply dummy text of the printing and
-                  typesetting industry. Lorem Ipsum has been the industry's
-                  standard dummy text ever since the 1500s, when an unknown
-                  printer took a galley of type and scrambled it to make a type
-                  specimen book. It has survived not only five centuries, but
-                  also the leap into electronic typesetting, remaining
-                  essentially unchanged.
+                  MovieFi▶️ is an online video streaming platform owned by
+                  Novi Digital Entertainment Private Limited, a wholly owned
+                  subsidiary of Star India Private Limited. Here are the key
+                  points about MovieFi▶️: <br /><span className=' font-bold'>Content Variety: MovieFi▶️</span>
+                  offers over 100,000 hours of TV content and movies across 9
+                  languages. It covers every major sport live. Video Streaming
+                  Technology: The platform uses adaptive video streaming
+                  technology to ensure the best possible video quality based on
+                  available bandwidth. Users can manually select their preferred
+                  video quality.<br/> User Experience: MovieFi▶️ focuses on a
+                  friendly user interface, optimized content search, and a
+                  curated content catalog. It spans 15 TV channels and hosts
+                  some of the longest-running and highest-rated TV shows in
+                  India. <br />Originals: MovieFi▶️ invests in original
+                  programming, including shows like “On Air with AIB,” “M Bole
+                  Toh,” and “One Tip One Hand.” Access: You can access Disney+
+                  Hotstar via the Google Play Store, Apple App Store, or
+                  directly at hotstar.com1. Enjoy streaming your favorite
+                  content onMovieFi▶️r! 🌟📺
                 </p>
               </div>
               <div className="grid md:grid-cols-2 gap-6 mt-8">
@@ -54,7 +54,7 @@ function AboutUs() {
               </div>
             </div>
             <img
-              src="/images/about2.jpg"
+              src="/images/head.jpg"
               alt="aboutus"
               className="w-full xl:block hidden h-header rounded-lg object-cover"
             />

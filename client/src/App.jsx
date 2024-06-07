@@ -13,6 +13,7 @@ import Aos from 'aos'
 import Password from './Screens/Dashboard/Password'
 import FavoritesMovies from './Screens/Dashboard/FavoritesMovies'
 import ToastContainer from './Component/Notification/ToastContainer'
+import ContactUs from './Screens/ContactUs'
 const App = () => {
   Aos.init();
   return (
@@ -20,6 +21,7 @@ const App = () => {
       <Routes>
         <Route path='/' element={<HomeScreen/>}/>
         <Route path='/aboutUs' element={<AboutUs/>}/>
+        <Route path='/contactUs' element={<ContactUs/>}/>
         <Route path='/movies' element={<MoviesPage/>}/>
         <Route path='/movie/:id' element={<SingleMovie/>}/>
         <Route path='/watch/:id' element={<WatchPage/>}/>

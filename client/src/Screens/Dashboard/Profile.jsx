@@ -1,30 +1,107 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Sidebar from './Sidebar';
 import { Input } from '../../Component/UsedInput';
 import Uploder from '../../Component/Uploder'
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { useForm } from 'react-hook-form';
+import { profileValidation } from '../../Component/Validation/UserValidation';
+import { InlineError } from '../../Component/Notification/Error';
+import ImagePreview from '../../Component/ImagePreview';
+import { updateProfileAction } from '../../Redux/Actions/userActions';
+import toast from 'react-hot-toast';
+
 function Profile() {
+  
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { userInfo} = useSelector(
+    (state) => state.userLogin
+  );
+  const [imageUrl,setImageUrl]=useState(userInfo ? userInfo.image : "")
+
+  const { isLoading, isError, isSuccess } = useSelector(
+    (state) => state.userUpdateProfile
+  );
+
+  //validate user
+
+  const {
+    handleSubmit,
+    register,
+    setValue,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(profileValidation),
+  });
+
+  //on submit
+  const onSubmit = (data) => {
+    dispatch(updateProfileAction({...data,image:imageUrl}))
+  };
+//useEffect
+useEffect(() => {
+  if(userInfo){
+    setValue("fullname",userInfo?.fullname)
+    setValue("email",userInfo?.email)
+  }
+  if(isSuccess){
+    dispatch({type:"USER_UPDAT_PROFILE_RESET"})
+  }
+  if(isError){
+    toast.error(isError)
+  }
+}, [userInfo, setValue,isError,isSuccess,dispatch]);
+
   return (
     <Sidebar>
-      <div className="flex flex-col gap-6">
+      <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-6">
         <h2 className="text-xl font-bold">Profile</h2>
-      <Uploder/>
-      <Input
-            label="Full name"
-            placeholder="moviefi"
-            type="text"
-            bg={true}
-          />
-       <Input
-            label="Email"
-            placeholder="moviefi@gmail.com"
-            type="email"
-            bg={true}
-          />
-          <div className="flex flex-wrap  flex-col-reverse sm:flex-row justify-between items-center">
-            <button className='bg-subMain transitions hover:bg-main border border-subMain flex-rows gap-4 text-white py-3 px-6 rounded-lg w-full sm:w-auto'>Delete Account</button>
-            <button className='bg-main transitions hover:bg-subMain border border-subMain flex-rows gap-4 text-white py-3 px-6 rounded-lg w-full sm:w-auto'>Update Account</button>
+        <div className='w-full grid lg:grid-cols-12 gap-6'>
+          <div className='col-span-10'>
+      <Uploder setImageUrl={setImageUrl}/>
           </div>
-      </div>
+          {/* imagpreview */}
+          <div className=' col-span-2'>
+            <ImagePreview 
+            image={imageUrl}
+            name={
+              userInfo? userInfo.fullname : "Moviefi"
+            }/>
+          </div>
+        </div>
+      <div className="w-full">
+            <Input
+              label="FullName"
+              placeholder="MovieFi" 
+              type="text"
+              name="fullname"
+              register={register('fullname')}
+              bg={true}
+            />
+            {errors.fullname && <InlineError text={errors.fullname.message} />}
+          </div>
+        <div className="w-full">
+            <Input
+              label="Email"
+              placeholder="moviefi@gmail.com"
+              type="email"
+              name="email"
+              register={register('email')}
+              bg={true}
+            />
+            {errors.email && <InlineError text={errors.email.message} />}
+          </div>
+          <div className="flex flex-wrap  flex-col-reverse sm:flex-row justify-between items-center gap-2">
+            <button className='bg-subMain transitions hover:bg-main border border-subMain flex-rows gap-4 text-white py-3 px-6 rounded-lg w-full sm:w-auto '>Delete Account</button>
+            <button className='bg-main transitions hover:bg-subMain border border-subMain flex-rows gap-4 text-white py-3 px-6 rounded-lg w-full sm:w-auto'>
+              {
+                isLoading ? "Updating..." : "Update Profile"
+              }
+            </button>
+          </div>
+      </form>
     </Sidebar>
   );
 }

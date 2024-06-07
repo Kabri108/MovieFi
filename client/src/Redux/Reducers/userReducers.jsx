@@ -20,6 +20,8 @@ export const userLoginReducer=(state={},action)=>{
     }
 }
 
+//REGISTER
+
 export const userRegisterReducer=(state={},action)=>{
     switch(action.type){
         case userConstants.USER_REGISTE_REQUEST:
@@ -29,6 +31,23 @@ export const userRegisterReducer=(state={},action)=>{
         case userConstants.USER_REGISTE_FAIL:
             return {isLoading:false,isError:action.payload};
         case userConstants.USER_REGISTE_RESET:
+            return {};
+        default:
+            return state;
+    }
+}
+
+//UPDATE PROFILE 
+
+export const updateProfileReducer=(state={},action)=>{
+    switch(action.type){
+        case userConstants.USER_UPDAT_PROFILE_REQUEST:
+            return {isLoading:true};
+        case userConstants.USER_UPDAT_PROFILE_SUCCESS:
+            return {isLoading:false,userInfo:action.payload,isSuccess:true};
+        case userConstants.USER_UPDAT_PROFILE_FAIL:
+            return {isLoading:false,isError:action.payload};
+        case userConstants.USER_UPDAT_PROFILE_RESET:
             return {};
         default:
             return state;

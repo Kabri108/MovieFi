@@ -27,4 +27,20 @@ const logoutService=()=>{
     return null;
 }
 
-export {registerService,loginService,logoutService}
+///update profile Api call
+const updateProfileService=async (user,token)=>{
+    const {data}=await Axios.put("/users",user,{
+        headers:{
+            Authorization:`Bearer${token}` ,
+        }
+    });
+    if(data){
+        localStorage.setItem("userInfo",JSON.stringify(data));
+    }
+    return data;
+}
+
+
+
+
+export {registerService,loginService,logoutService,updateProfileService}
