@@ -1,10 +1,12 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { Navigate, Outlate } from 'react-router-dom';
+import { Navigate, Outlet } from 'react-router-dom';
 
+
+// Public protection
 function ProtectedRouter() {
   const { userInfo } = useSelector((state) => state.userLogin);
-  return userInfo?.token ? <Outlate /> : <Navigate to="/login" />;
+  return userInfo?.token ? <Outlet /> : <Navigate to="/login" />;
 }
 
 //admin router protection
@@ -14,7 +16,7 @@ function AdminRouterProtection() {
 
   return userInfo?.token ? (
     userInfo?.isAdmin ? (
-      <Outlate />
+      <Outlet />
     ) : (
       <Navigate to="/*" />
     )
