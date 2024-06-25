@@ -39,7 +39,7 @@ export const userRegisterReducer=(state={},action)=>{
 
 //UPDATE PROFILE 
 
-export const updateProfileReducer=(state={},action)=>{
+export const userupdateProfileReducer=(state={},action)=>{
     switch(action.type){
         case userConstants.USER_UPDAT_PROFILE_REQUEST:
             return {isLoading:true};
@@ -48,6 +48,23 @@ export const updateProfileReducer=(state={},action)=>{
         case userConstants.USER_UPDAT_PROFILE_FAIL:
             return {isLoading:false,isError:action.payload};
         case userConstants.USER_UPDAT_PROFILE_RESET:
+            return {};
+        default:
+            return state;
+    }
+}
+
+//DELETE PROFILE
+
+export const userDeleteProfileReducer=(state={},action)=>{
+    switch(action.type){
+        case userConstants.USER_DELETE_PROFILE_REQUEST:
+            return {isLoading:true};
+        case userConstants.USER_DELETE_PROFILE_SUCCESS:
+            return {isLoading:false,isSuccess:true};
+        case userConstants.USER_DELETE_PROFILE_FAIL:
+            return {isLoading:false,isError:action.payload};
+        case userConstants.USER_DELETE_PROFILE_RESET:
             return {};
         default:
             return state;
