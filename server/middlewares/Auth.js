@@ -1,47 +1,44 @@
-
-import jwt from 'jsonwebtoken'
+import jwt from 'jsonwebtoken';
 import User from '../Models/User.model.js';
-import asyncHandler from 'express-async-handler'
+import asyncHandler from 'express-async-handler';
 
-//@desc Aythenticate user anfd get token  Token
-const generateToken=(id)=>{
-    return jwt.sign({id},process.env.JWT_SECRET,{expiresIn:"1d"})
-}
+// Authenticate user and generate token
+const generateToken = (id) => {
+    return jwt.sign({ id }, process.env.JWT_SECRET, { expiresIn: '1d' });
+};
 
-//protection middleware
-const protect =asyncHandler(async(req,res,next)=>{
+// Protection middleware
+const protect = asyncHandler(async (req, res, next) => {
     let token;
-    //check if token exists in headers
-    if(req.headers.authorization && req.headers.authorization.startsWith("Bearer")){//set token from bearer token from header
+    // Check if token exists in headers
+    if (req.headers.authorization && req.headers.authorization.startsWith('Bearer')) {
         try {
-            token=req.headers.authorization.split(" ")[1];
-            //verify token and get user id
-            const decoded=jwt.verify(token, process.env.JWT_SECRET);
-            //get user id from decode token 
-
-            req.user =await User.findById(decoded.id).select("-password");
+            token = req.headers.authorization.split(' ')[1];
+            // Verify token and get user id
+            const decoded = jwt.verify(token, process.env.JWT_SECRET);
+            // Get user id from decoded token
+            req.user = await User.findById(decoded.id).select('-password');
             next();
         } catch (error) {
             console.error(error);
             res.status(401);
-            throw new Error("Not authorized,token faild")
-
+            throw new Error('Not authorized: token failed to verify');
         }
     }
-    if(!token){
-        res.status(401)
-        throw new Error("Not authorized, no token ")
-    }
-})
-
-///admin middleware
-const admin=(req,res,next)=>{
-    if(req.user && req.user.isAdmin){
-        next()
-    }else{
+    if (!token) {
         res.status(401);
-        throw new Error("Not authorized as an admin")
+        throw new Error('Not authorized: no token provided');
     }
-}
+});
 
-export {generateToken,protect,admin}
+// Admin middleware
+const admin = (req, res, next) => {
+    if (req.user && req.user.isAdmin) {
+        next();
+    } else {
+        res.status(401);
+        throw new Error('Not authorized as an admin');
+    }
+};
+
+export { generateToken, protect, admin };

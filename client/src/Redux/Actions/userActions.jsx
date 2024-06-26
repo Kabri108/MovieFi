@@ -20,12 +20,14 @@ const loginAction =(data)=>async(dispatch)=>{
 const registerAction=(data)=>async(dispatch)=>{
     try {
         dispatch({type:userConstants.USER_REGISTE_REQUEST})
+        
         const responce=await userApi.registerService(data)
         dispatch({type:userConstants.USER_REGISTE_SUCCESS,payload:responce})
         dispatch({type:userConstants.USER_LOGIN_SUCCESS,payload:responce})
         
     } catch (error) {
         ErrorAction(error,dispatch,userConstants.USER_REGISTE_FAIL)
+        
     }
 }
 
@@ -66,11 +68,9 @@ const deleteProfileAction=()=>async(dispatch,getState)=>{
         await userApi.deleteProfileService(tokenProtection(getState));
         dispatch({type:userConstants.USER_DELETE_PROFILE_SUCCESS})
         toast.success("Profile Deleted")
-        dispatch(loginAction())
+        dispatch(logoutAction())
     } catch (error) {
         ErrorAction(error,dispatch,userConstants.USER_DELETE_PROFILE_FAIL)
-       
-
     }
 }
 

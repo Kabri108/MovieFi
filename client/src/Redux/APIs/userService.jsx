@@ -3,11 +3,17 @@ import Axios from "./Axios";
 //register new user API call
 
 const registerService= async(user)=>{
-    const{data}=await Axios.post('users',user);
+    
+  try {
+    const{data}=await Axios.post('/users',user);
     if(data){
         localStorage.setItem("userInfo",JSON.stringify(data))
     }
     return data;
+  } catch (error) {
+    console.error('Error during registration:', error.response ? error.response.data : error.message);
+    throw error;
+  }
 }
 
 

@@ -2,7 +2,7 @@ import asyncHandler from "express-async-handler"
 import User from "../Models/User.model.js"
 import bcrypt from 'bcryptjs'
 import { generateToken } from "../middlewares/Auth.js"
-import { json } from "express"
+
 
 // express-async-handler
 // Simple middleware for handling exceptions inside of async express routes and passing them to your express error handlers.
@@ -50,6 +50,7 @@ const registerUser = asyncHandler(async (req, res) => {
 
     } catch (error) {
         res.status(400).json({message:error.message})
+        
     }
 })
 

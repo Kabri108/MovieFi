@@ -27,6 +27,7 @@ function Register() {
 
   //on submit
   const onSubmit=(data)=>{
+    
    dispatch(registerAction(data))
   }
 
@@ -40,7 +41,7 @@ useEffect(()=>{
     navigate('/profile')
   }
   if(isSuccess){
-    toast.success(`Welcome ${userInfo?.fullName}`)
+    toast.success(`Welcome back${userInfo?.fullName}`)
     dispatch({type:"USER_REGISTE_RESET"})
   }
   if(isError){
@@ -64,11 +65,11 @@ useEffect(()=>{
               label="FullName"
               placeholder="MovieFi" 
               type="text"
-              name="fullname"
-              register={register('fullname')}
+              name="fullName"
+              register={register('fullName')}
               bg={true}
             />
-            {errors.fullname && <InlineError text={errors.fullname.message} />}
+            {errors.fullName && <InlineError text={errors.fullName.message} />}
           </div>
           <div className="w-full">
             <Input

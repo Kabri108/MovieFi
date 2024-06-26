@@ -18,35 +18,37 @@ import { AdminRouterProtection, ProtectedRouter } from './ProtectedRouter';
 const App = () => {
   Aos.init();
   return (
-    // <ToastContainer>
-    <Routes>
-      {/* Public routes */}
-      <Route path="/" element={<HomeScreen />} />
-      <Route path="/aboutUs" element={<AboutUs />} />
-      <Route path="/contactUs" element={<ContactUs />} />
-      <Route path="/movies" element={<MoviesPage />} />
-      <Route path="/movie/:id" element={<SingleMovie />} />
-      <Route path="/watch/:id" element={<WatchPage />} />
-      <Route path="*" element={<NotFound />} />
-      <Route path="/login" element={<Login />} />
-      <Route path="/register" element={<Register />} />
-      {/* PRIVATE PUBLIC ROUTES */}
-      <Route element={<ProtectedRouter />}>
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/Password" element={<Password />} />
-        <Route path="/Favorites" element={<FavoritesMovies />} />
-        {/* ADMIN ROUTES */}
-        <Route element={<AdminRouterProtection />}>
-          {/* <Route path='/Favorites' element={<MovieList/>}/>
+    <>
+      {/* <ToastContainer> */}
+        <Routes>
+          {/* Public routes */}
+          <Route path="/" element={<HomeScreen />} />
+          <Route path="/aboutUs" element={<AboutUs />} />
+          <Route path="/contactUs" element={<ContactUs />} />
+          <Route path="/movies" element={<MoviesPage />} />
+          <Route path="/movie/:id" element={<SingleMovie />} />
+          <Route path="/watch/:id" element={<WatchPage />} />
+          <Route path="*" element={<NotFound />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          {/* PRIVATE PUBLIC ROUTES */}
+          <Route element={<ProtectedRouter />}>
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/Password" element={<Password />} />
+            <Route path="/Favorites" element={<FavoritesMovies />} />
+            {/* ADMIN ROUTES */}
+            <Route element={<AdminRouterProtection />}>
+              {/* <Route path='/Favorites' element={<MovieList/>}/>
         <Route path='/Favorites' element={<FavoritesMovies/>}/>
         <Route path='/Favorites' element={<FavoritesMovies/>}/>
         <Route path='/Favorites' element={<FavoritesMovies/>}/>
         <Route path='/Favorites' element={<FavoritesMovies/>}/>
         <Route path='/Favorites' element={<FavoritesMovies/>}/> */}
-        </Route>
-      </Route>
-    </Routes>
-    // </ToastContainer>
+            </Route>
+          </Route>
+        </Routes>
+      {/* </ToastContainer> */}
+    </>
   );
 };
 

@@ -5,7 +5,7 @@ import Uploder from '../../Component/Uploder'
 import { useDispatch, useSelector } from 'react-redux';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
-import { profileValidation } from '../../Component/Validation/UserValidation';
+import { ProfileValidation} from '../../Component/Validation/UserValidation';
 import { InlineError } from '../../Component/Notification/Error';
 import ImagePreview from '../../Component/ImagePreview';
 import { deleteProfileAction, updateProfileAction } from '../../Redux/Actions/userActions';
@@ -35,7 +35,7 @@ function Profile() {
     setValue,
     formState: { errors },
   } = useForm({
-    resolver: yupResolver(profileValidation),
+    resolver: yupResolver(ProfileValidation),
   });
 
   //UPDATE PROFILE

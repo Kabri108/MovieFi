@@ -63,7 +63,7 @@ export const Movies = [
       name: 'The Matrix',
       desc: 'A science fiction film directed by Lana and Lilly Wachowski.',
       titleImage: 'matrix.jpg',
-      image: '7.jpg',
+      image: 'm3.jpg',
       category: 'Sci-Fi',
       language: 'English',
       year: '1999',
