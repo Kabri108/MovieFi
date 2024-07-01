@@ -4,7 +4,6 @@ import { ErrorAction, tokenProtection } from '../Protection';
 import toast from 'react-hot-toast'
 
 //login action 
-
 const loginAction =(data)=>async(dispatch)=>{
     try {
         dispatch({type:userConstants.USER_LOGIN_REQUEST});
@@ -16,7 +15,6 @@ const loginAction =(data)=>async(dispatch)=>{
 }
 
 //register action 
-
 const registerAction=(data)=>async(dispatch)=>{
     try {
         dispatch({type:userConstants.USER_REGISTE_REQUEST})
@@ -32,7 +30,6 @@ const registerAction=(data)=>async(dispatch)=>{
 }
 
 //logOut action
-
 const logoutAction=()=>(dispatch)=>{
     userApi.logoutService();
     dispatch({type:userConstants.USER_LOGOUT})
@@ -41,7 +38,6 @@ const logoutAction=()=>(dispatch)=>{
 }
 
 //update profile action
-
 const updateProfileAction=(user)=> async(dispatch,getState)=>{
     try {
         dispatch({type:userConstants.USER_UPDAT_PROFILE_REQUEST})
@@ -59,9 +55,7 @@ const updateProfileAction=(user)=> async(dispatch,getState)=>{
     }
 }
 
-
 //delete profile action
-
 const deleteProfileAction=()=>async(dispatch,getState)=>{
     try {
         dispatch({type:userConstants.USER_DELETE_PROFILE_REQUEST})
@@ -74,4 +68,20 @@ const deleteProfileAction=()=>async(dispatch,getState)=>{
     }
 }
 
-export {loginAction,logoutAction,registerAction,updateProfileAction,deleteProfileAction}
+//changr password action
+const changePasswordAction=(passwords)=>async(dispatch,getState)=>{
+    try {
+        dispatch({type:userConstants.USER_DELETE_PROFILE_REQUEST})
+        const responce = await userApi.changePasswordService(
+            passwords,
+            tokenProtection(getState)
+        );
+        dispatch({
+            type:userConstants.USER_CHANGE_PASSWORD_SUCCESS,
+        payload:responce
+        })
+    } catch (error) {
+        ErrorAction(error,dispatch,userConstants.USER_CHANGE_PASSWORD_FAIL)
+    }
+}
+export {loginAction,logoutAction,registerAction,updateProfileAction,deleteProfileAction,changePasswordAction}

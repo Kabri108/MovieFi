@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import HomeScreen from './Screens/HomeScreen';
 import AboutUs from './Screens/AboutUs';
@@ -17,9 +17,16 @@ import ContactUs from './Screens/ContactUs';
 import { AdminRouterProtection, ProtectedRouter } from './ProtectedRouter';
 const App = () => {
   Aos.init();
+
+  const [showToasts, setShowToasts] = useState(false); // Example state for toast container
+
+  const showToast = () => {
+    // Logic to trigger toast notification
+    setShowToasts(true);
+  };
   return (
     <>
-      {/* <ToastContainer> */}
+     {showToast && <ToastContainer />}
         <Routes>
           {/* Public routes */}
           <Route path="/" element={<HomeScreen />} />

@@ -5,7 +5,7 @@ export default function ToastContainer(){
         <Toaster
         position='bottom-left'
         reverseOrder={false}
-        gutter={8}
+        gutter={16}
         toastOptions={{
             duration:2000,
         }}
