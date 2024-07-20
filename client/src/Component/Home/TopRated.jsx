@@ -16,7 +16,7 @@ const TopRated = () => {
 
   return (
     <>
-      <div className='py-16'>
+      <div className='py-12'>
         <Title title='Top Rated' Icon={FaStar} />
         <div className="mt-10 relative">
           <button className='sliderbtn absolute z-10  translate-y-32 ' ref={(node) => setPrevEl(node)}>

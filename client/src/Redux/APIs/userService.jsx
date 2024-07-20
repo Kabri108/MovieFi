@@ -1,7 +1,6 @@
 import Axios from "./Axios";
 
 //register new user API call
-
 const registerService= async(user)=>{
     
   try {
@@ -16,9 +15,7 @@ const registerService= async(user)=>{
   }
 }
 
-
 //Login user API call
-
 const loginService=async(user)=>{
     const {data}=await Axios.post('users/login',user);
     if(data){
@@ -26,8 +23,8 @@ const loginService=async(user)=>{
     }
     return data
 }
-//logout user Function
 
+//logout user Function
 const logoutService=()=>{
     localStorage.removeItem('userInfo');
     return null;
@@ -60,7 +57,6 @@ const deleteProfileService=async (token)=>{
 }
 
 //change password Api call
-
 const changePasswordService=async(user,token)=>{
     const{data}=await Axios.put("/users/password",user,{
         headers:{
@@ -71,4 +67,24 @@ const changePasswordService=async(user,token)=>{
 
 }
 
-export {registerService,loginService,logoutService,updateProfileService, deleteProfileService,changePasswordService}
+//get facorite movies
+const getFavoriteMovies=async(token)=>{
+    const{data}=await Axios.get("/users/favorites",{
+        headers:{
+            Authorization:`bearer ${token}`
+        }
+    })
+    return data;
+}
+
+//delete all favorite movies
+const deleteAllFsvoriteMovies= async(token)=>{
+    const{data}=await Axios.delete("/users/favorites",{
+        headers:{
+            Authorization:`Bearer ${token}`
+        }
+    })
+    return data;
+}
+
+export {registerService,loginService,logoutService,updateProfileService, deleteProfileService,changePasswordService,getFavoriteMovies,deleteAllFsvoriteMovies}

@@ -1,9 +1,24 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Sidebar from './Sidebar';
 import Table from '../../Component/Table';
 import { Movies } from '../../Data/MovieData';
+import { useDispatch, useSelector } from 'react-redux';
+import { getFavoriteMoviesAction } from '../../Redux/Actions/userActions';
 
 function FavoritesMovies() {
+  const dispatch=useDispatch()
+
+  const {isLoading,isError,likedMovies}=useSelector((state)=>state.userGetFavoriteMovies)
+
+  //useEffect
+
+  useEffect(()=>{
+    dispatch(getFavoriteMoviesAction())
+    if(isError){
+      toast.error(isError);
+      dispatch({type:"GET_FAVORITE_MOVIES_RESET"})
+    }
+  },[dispatch,isError])
   return (
     <Sidebar>
       <div className="flex flex-col gap-6">
@@ -14,7 +29,9 @@ function FavoritesMovies() {
             Delete All
           </button>
         </div>
-          <Table data={Movies} />
+          {
+            isLoading ? <Loader/> :likedMovies.length >0 ? <Table data={likedMovies} admin={false} />: <p>Empty</p>
+          }
       </div>
     </Sidebar>
   );

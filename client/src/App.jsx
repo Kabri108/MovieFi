@@ -49,8 +49,8 @@ const App = () => {
         <Route path='/Favorites' element={<FavoritesMovies/>}/>
         <Route path='/Favorites' element={<FavoritesMovies/>}/>
         <Route path='/Favorites' element={<FavoritesMovies/>}/>
-        <Route path='/Favorites' element={<FavoritesMovies/>}/>
-        <Route path='/Favorites' element={<FavoritesMovies/>}/> */}
+        <Route path='/Favorites' element={<FavoritesMovies/>}/>*/}
+        <Route path='/Favorites' element={<FavoritesMovies/>}/> 
             </Route>
           </Route>
         </Routes>

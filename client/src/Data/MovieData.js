@@ -123,7 +123,7 @@ export const Movies = [
       name: 'The Grand Budapest Hotel',
       desc: 'A comedy film directed by Wes Anderson.',
       titleImage: 'grand_budapest_hotel.jpg',
-      image: '6.jpg',
+      image: '1.jpg',
       category: 'Comedy',
       language: 'English',
       year: '2014',

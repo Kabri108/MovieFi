@@ -84,4 +84,19 @@ const changePasswordAction=(passwords)=>async(dispatch,getState)=>{
         ErrorAction(error,dispatch,userConstants.USER_CHANGE_PASSWORD_FAIL)
     }
 }
-export {loginAction,logoutAction,registerAction,updateProfileAction,deleteProfileAction,changePasswordAction}
+
+//get all favorite movies action
+const getFavoriteMoviesAction=(dispatch,getState)=>async()=>{
+    try {
+        dispatch({type:userConstants.GET_FAVORITE_MOVIES_REQUEST})
+        const responce=await userApi.getFavoriteMovies(tokenProtection(getState))
+        dispatch({
+            type:userConstants.GET_FAVORITE_MOVIES_SUCCESS,
+            payload:responce,
+        })
+    } catch (error) {
+        ErrorAction(error,dispatch,userConstants.GET_FAVORITE_MOVIES_FAIL)
+    }
+}
+//delete all favorite movies action
+export {loginAction,logoutAction,registerAction,updateProfileAction,deleteProfileAction,changePasswordAction,getFavoriteMoviesAction}
