@@ -192,7 +192,7 @@ const getLikedMovies=asyncHandler(async(req,res)=>{
         }
 
     } catch (error) {
-        
+         res.status(400).json({message:error.message})
     }
 
 })
@@ -209,7 +209,7 @@ const addLikedMovie=asyncHandler(async(req,res)=>{
         if(user){
             //if movie alredy liked
             //if movie alredy liked send error message
-            if(user.likedMovies.push(movieId)){
+            if(user.likedMovies.includes(movieId)){
                 res.status(400);
                 throw new Error("Movie alredy liked")
             }

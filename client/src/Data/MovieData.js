@@ -8,7 +8,7 @@ export const Movies = [
       language: 'English',
       year: '1994',
       time: 2.5,
-      video: '',
+      video: 'https://www.youtube.com/watch?v=PLl99DlL6b4',
       rate: 3,
     },
     {

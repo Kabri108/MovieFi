@@ -25,8 +25,7 @@ const logoutHandler=()=>{
 
 
 
-  const SideLinks = userInfo?.isAdmin?(
-    
+const SideLinks = userInfo?.isAdmin?(
   [
     {
       name: 'Dashboard',
@@ -39,8 +38,8 @@ const logoutHandler=()=>{
       icon: FaListAlt,
     },
     {
-      name: 'Add Movie',
-      link: '/addmovie',
+      name: "Add Movie",
+      link: "/addmovie",
       icon: RiMovie2Fill,
     },
     {

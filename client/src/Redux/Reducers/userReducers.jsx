@@ -83,7 +83,7 @@ export const userChangePasswordReducer = (state = {}, action) => {
 };
 
 //GET FAVORITE MOVIES
-export const userGetFavoriteMovies = (
+export const userGetFavoriteMoviesReducer = (
   state = {
     likedMovies: [],
   },
@@ -94,9 +94,7 @@ export const userGetFavoriteMovies = (
       return { isLoading: true };
     case userConstants.GET_FAVORITE_MOVIES_SUCCESS:
       return {
-        isLoading: true,
-        likedMovies: action.payload,
-      };
+        isLoading: false,likedMovies:action.payload};
     case userConstants.GET_FAVORITE_MOVIES_FAIL:
       return { isLoading: false, isError: action.payload };
     case userConstants.GET_FAVORITE_MOVIES_RESET:
@@ -107,7 +105,7 @@ export const userGetFavoriteMovies = (
 };
 
 //DELETE FAVORITE MOVIES
-export const userDeleteFavoriteMovies=(state={},action)=>{
+export const userDeleteFavoriteMoviesReducer=(state={},action)=>{
   switch (action.type) {
     case userConstants.DELETE_FAVORITE_MOVIES_REQUEST:
       return {isLoading:true};

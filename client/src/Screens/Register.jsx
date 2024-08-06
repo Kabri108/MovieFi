@@ -17,7 +17,7 @@ function Register() {
   const dispatch=useDispatch();
   const navigate=useNavigate();
 
-  const {isLoading,isError,userInfo,isSuccess}=useSelector((state)=>state.userRegister)
+  const {isLoading,isError,userInfo,isSuccess,}=useSelector((state)=>state.userRegister)
 
   //validate user
 
@@ -27,14 +27,13 @@ function Register() {
 
   //on submit
   const onSubmit=(data)=>{
-    
    dispatch(registerAction(data))
   }
 
 //useEffect
 useEffect(()=>{
   if(userInfo?.isAdmin){
-    navigate('/dashboard')
+    navigate('/dashboard');
   }
 
   else if(userInfo){

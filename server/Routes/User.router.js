@@ -6,13 +6,12 @@ const router=express.Router();
 /////////////PUBLIC ROUTES/////////////
 router.post('/',registerUser);
 router.post('/login',loginUser);
-
 // ////////PRIVATE ROUTES//////////////////
 router.put('/',protect,updateUserProfile)
 router.delete("/",protect,deleteUserProfile)
 router.put("/password",protect,changeUserPassword)
 router.get('/fevorites',protect,getLikedMovies)
-router.get('/fevorites',protect,addLikedMovie)
+router.post('/fevorites',protect,addLikedMovie)
 router.delete('/fevorites',protect,deleteLikedMovies)
 
 

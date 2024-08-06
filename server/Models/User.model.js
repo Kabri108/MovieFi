@@ -20,7 +20,7 @@ const UserSchema=mongoose.Schema({
     image:{
         type:String,
     },
-    inAdmin:{
+    isAdmin:{
         type:Boolean,
         default:false,
     },

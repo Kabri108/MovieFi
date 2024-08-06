@@ -86,10 +86,10 @@ const changePasswordAction=(passwords)=>async(dispatch,getState)=>{
 }
 
 //get all favorite movies action
-const getFavoriteMoviesAction=(dispatch,getState)=>async()=>{
+const getFavoriteMoviesAction=()=>async(dispatch,getState)=>{
     try {
         dispatch({type:userConstants.GET_FAVORITE_MOVIES_REQUEST})
-        const responce=await userApi.getFavoriteMovies(tokenProtection(getState))
+        const responce=await userApi.getFavoriteMoviesService(tokenProtection(getState))
         dispatch({
             type:userConstants.GET_FAVORITE_MOVIES_SUCCESS,
             payload:responce,
@@ -99,4 +99,16 @@ const getFavoriteMoviesAction=(dispatch,getState)=>async()=>{
     }
 }
 //delete all favorite movies action
-export {loginAction,logoutAction,registerAction,updateProfileAction,deleteProfileAction,changePasswordAction,getFavoriteMoviesAction}
+const deleteFavoriteMovieAction=()=>async(dispatch,getState)=>{
+    try {
+        dispatch({type:userConstants.DELETE_FAVORITE_MOVIES_REQUEST})
+       await userApi.deleteAllFsvoriteMovies(tokenProtection(getState))
+       dispatch({type:userConstants.DELETE_FAVORITE_MOVIES_SUCCESS})
+
+    } catch (error) {
+        ErrorAction(error,dispatch,userConstants.DELETE_FAVORITE_MOVIES_FAIL)
+    }
+}
+
+
+export {loginAction,logoutAction,registerAction,updateProfileAction,deleteProfileAction,changePasswordAction,getFavoriteMoviesAction,deleteFavoriteMovieAction}
