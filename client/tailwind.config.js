@@ -10,7 +10,7 @@ export default {
       height:{
         header:'560px',
         rate:'300px',
-        banerh: '30rem',
+        banerh: '28rem',
       },
       
       fontSize:{
