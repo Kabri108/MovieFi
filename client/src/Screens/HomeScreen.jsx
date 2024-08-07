@@ -8,7 +8,7 @@ import Promos from '../Component/Home/Promos'
 const HomeScreen = () => {
   return (
     <Layout>
-      <div className=' mx-auto min-h-screen px-2 mb-6'> 
+      <div className=' mx-auto min-h-screen px-2 mb-4'> 
         <Banner/> 
         <PopularMovies/> 
         <Promos/>

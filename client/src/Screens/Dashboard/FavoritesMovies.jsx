@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { deleteFavoriteMovieAction, getFavoriteMoviesAction } from '../../Redux/Actions/userActions';
 import Loader from '../../Component/Loader';
 import toast from 'react-hot-toast';
+import { Empty } from '../../Component/Notification/Empty';
 
 
 function FavoritesMovies() {
@@ -47,7 +48,7 @@ function FavoritesMovies() {
           }
         </div>
           {
-            isLoading ? <Loader/> :likedMovies.length >0 ? <Table data={likedMovies} admin={false} />: <p>Empty</p>
+            isLoading ?( <Loader/>) :likedMovies.length >0 ? <Table data={likedMovies} admin={false} />:(<Empty message={"no movies found"}/>)
           }
       </div>
     </Sidebar>

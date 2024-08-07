@@ -16,7 +16,7 @@ const TopRated = () => {
 
   return (
     <>
-      <div className='py-12'>
+      <div className='py-8'>
         <Title title='Top Rated' Icon={FaStar} />
         <div className="mt-10 relative">
           <button className='sliderbtn absolute z-10  translate-y-32 ' ref={(node) => setPrevEl(node)}>
@@ -59,7 +59,7 @@ const TopRated = () => {
               Movies.map((movie, index) => (
                 <SwiperSlide key={index}>
                   <div className='p-2 h-rate hovered border border-border bg-dry  rounded-lg overflow-hidden  '>
-                    <img src={`/images/movies/${movie.image}`} alt={movie.name} className='w-full h-full object-cover rounded-lg' />
+                    <img src={`/images/movies/${movie?.image}`} alt={movie.name} className='w-full h-full object-cover rounded-lg' />
                     <div className='px-4 gap-6 hoveres text-center absolute bg-black bg-opacity-70 top-0 bottom-0 left-0 right-0 '>
                       <button className='w-12 h-12  flex-colo transitions hover:bg-subMain rounded-lg bg-white bg-opacity-30 text-white '><FaHeart /></button>
                       <Link className='font-semibold text-xl' to={`/movies/${movie.name}`}>{movie.name}</Link>

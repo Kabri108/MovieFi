@@ -5,11 +5,11 @@ import Movie from '../Movie';
 import { Movies } from '../../Data/MovieData';
 const PopularMovies = () => {
   return (
-    <div className="my-12 mx-2">
+    <div className="my-8 mx-2">
       <Title title='Popular Movies' Icon={IoMdFilm} />
       <div className='grid sm:mt-12 mt-6 xl:grid-col-6 lg:grid-cols-6 sm:grid-cols-4 grid-cols-2 lg:gap-6 sm:gap-4 gap-2 '>
         {
-          Movies.slice(0, 8).map((movie, index) => (
+          Movies.slice(0, 12).map((movie, index) => (
             <Movie key={index} movie={movie}/>
         ))}
       </div>
