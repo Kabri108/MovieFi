@@ -11,3 +11,14 @@ export const getAllMoviesService=async({
 
     return data
 }
+
+//create movie function 
+
+export const createMovieService= async(token,movie)=>{
+    const{data}=await Axios.post(`/movies`,movie,{
+        headers:{
+            Authorization:`Bearer ${token}`
+        }
+    })
+    return data;
+}

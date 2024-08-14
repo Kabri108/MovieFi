@@ -34,7 +34,7 @@ const logoutService=()=>{
 const updateProfileService=async (user,token)=>{
     const {data}=await Axios.put("/users",user,{
         headers:{
-            Authorization:`Bearer${token}` ,
+            Authorization:`Bearer ${token}` ,
         }
     });
     if(data){

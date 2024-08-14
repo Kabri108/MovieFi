@@ -1,6 +1,5 @@
 import React from 'react'
 import toast from 'react-hot-toast'
-import { setLocale } from 'yup'
 import Axios from './Axios'
 
 const uploadImageService= async(file,setLoading)=>{
@@ -13,6 +12,12 @@ const uploadImageService= async(file,setLoading)=>{
     } catch (error) {
         setLoading(false)
         toast.error("Something went wrong")
+        if (error.response) {
+            // Handle specific HTTP error codes (e.g., 400 for bad request)
+            toast.error(error.response.data.message || "Upload failed");
+        } else {
+            toast.error("Network error or server issue");
+        }
     }
 }
 

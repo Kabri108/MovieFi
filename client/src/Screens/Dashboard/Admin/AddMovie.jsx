@@ -1,19 +1,93 @@
-import React from 'react'
-import Sidebar from '../Sidebar'
-import { Input, Message } from '../../../Component/UsedInput';
-import Uploder from '../../../Component/Uploder';
-import { MdDelete } from 'react-icons/md';
-import { FaEdit } from 'react-icons/fa';
+import React, { useEffect, useState } from "react";
+import Sidebar from "../Sidebar";
+import { UsersData } from "../../../Data/MovieData";
+import { MdDelete } from "react-icons/md";
+import { FaEdit } from "react-icons/fa";
+import { ImUpload } from "react-icons/im";
+import Uploder from "../../../Component/Uploder";
+import { Input, Message, Select } from "../../../Component/UsedInput";
+import CategoriesData from "../../../Data/CategoriesData ";
+import CastsModal from "../../../Component/modals/CastsModal";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { useForm } from "react-hook-form";
+import { movieValidation } from "../../../Component/Validation/MovieValidation";
+import { removeCastAction } from "../../../Redux/Actions/moviesAction";
+import toast from "react-hot-toast";
+import {InlineError} from '../../../Component/Notification/Error'
+import ImagePreview from "../../../Component/ImagePreview";
+// import { InlineError } from '../Component/Notification/Error';
 
 function AddMovie() {
     const [modalOpen, setModalOpen] = useState(false);
     const [cast, setCast] = useState(null);
-  
+    const [imageWithoutTitle, setimageWithoutTitle] = useState("");
+    const [imageTitle, setimageTitle] = useState("");
+    const [videoUrl, setvideoUrl] = useState("");
+
+    const dispatch=useDispatch();
+    const navigate=useNavigate();
+
+    //use selectors
+    const {categories} =useSelector((state)=>state.categoryGetAll)
+    const{isLoading,isError,isSuccess}=useSelector(
+      (state)=>state.createMovie
+    )
+
+    // const {casts}=useSelector((state)=>state.casts)
+   
+// validate movies
+
+const {
+  handleSubmit,
+  register,
+  reset,
+  formState: { errors },
+} = useForm({
+  resolver: yupResolver(movieValidation),
+});
+
+//on submit
+const onSubmit = (data) => {
+  // dispatch(loginAction(data));
+  console.log(data)
+};
+
+//delete cast handler
+const deleteCastHandler=(id)=>{
+  dispatch(removeCastAction(id))
+  toast.success("Cast deleted successfully")
+}
+
+
+
     useEffect(() => {
+    //  if modal is false then reset cast
       if (modalOpen === false) {
         setCast();
       }
-    }, [modalOpen]);
+      //if modal is success then reset from and nevigate to addmovies
+      if(isSuccess){
+        reset({
+          name:"",
+          time:"",
+          language:"",
+          year:"",
+          category:"",
+          desc:"",
+        })
+        setimageTitle("")
+        setimageWithoutTitle("")
+        setvideoUrl("")
+        dispatch({type:"CREATE_MOVIE_RESET"})
+        navigate("/addMovie")
+      }
+      if(isError){
+        toast.error("something went wrong")
+        dispatch({type:"CREATE_MOVIE_RESET"})
+      }
+    }, [modalOpen,isError,isSuccess,dispatch,reset,navigate]);
   
     return (
       <Sidebar>
@@ -25,28 +99,52 @@ function AddMovie() {
         <div className="flex flex-col gap-6">
           <h2 className="text-xl font-bold">Create Movie</h2>
           <div className="w-full grid md:grid-cols-2 gap-6">
+            <div className="w-full">
             <Input
               label="Movie Title"
               placeholder="Game of Thrones"
               type="text"
               bg={true}
+              name="name"
+              register={register("name")}
             />
-            <Input label="Hours" placeholder="2hr" type="text" bg={true} />
+            {errors.name && <InlineError text={errors.name.message} />}
+            </div>
+            <div className="w-full">
+            <Input label="Hours" 
+            placeholder="2hr" 
+            type="text" 
+            bg={true}
+            name="time"
+            register={register('time')} 
+            />
+             {errors.time && <InlineError text={errors.time.message} />}
+            </div>
           </div>
   
           <div className="w-full grid md:grid-cols-2 gap-6">
+            <div className="w-full">
             <Input
               label="Language Used"
               placeholder="English"
               type="text"
               bg={true}
+              name="language"
+              register={register("language")}
             />
+            {errors.language && <InlineError text={errors.language.message} />}
+            </div>
+            <div className="w-full">
             <Input
               label="Year of Release"
               placeholder="2022"
               type="number"
               bg={true}
+              name="year"
+              register={register("year")}
             />
+            {errors.year && <InlineError text={errors.year.message} />}
+            </div>
           </div>
   
           {/* IMAGES */}
@@ -56,7 +154,8 @@ function AddMovie() {
               <p className="text-border font-semibold text-sm">
                 Image without Title
               </p>
-              <Uploder />
+              <Uploder setImageUrl={setimageWithoutTitle} />
+              <ImagePreview image={imageWithoutTitle} name="imageWithoutTitle"/>
               <div className="w-32 h-32 p-2 bg-main border border-border rounded">
                 <img
                   src="/images/movies/99.jpg"

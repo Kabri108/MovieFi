@@ -87,11 +87,11 @@ useEffect(() => {
               label="FullName"
               placeholder="MovieFi" 
               type="text"
-              name="fullname"
-              register={register('fullname')}
+              name="fullName"
+              register={register('fullName')}
               bg={true}
             />
-            {errors.fullname && <InlineError text={errors.fullname.message} />}
+            {errors.fullName && <InlineError text={errors.fullName.message} />}
           </div>
         <div className="w-full">
             <Input
@@ -114,7 +114,9 @@ useEffect(() => {
               }
 
             </button>
-            <button className='bg-main transitions hover:bg-subMain border border-subMain flex-rows gap-4 text-white py-3 px-6 rounded-lg w-full sm:w-auto'>
+            <button 
+            type='submit'
+            className='bg-main transitions hover:bg-subMain border border-subMain flex-rows gap-4 text-white py-3 px-6 rounded-lg w-full sm:w-auto'>
               {
                 isLoading ? "Updating..." : "Update Profile"
               }

@@ -47,7 +47,7 @@ const App = () => {
           <Route path="/Favorites" element={<FavoritesMovies />} />
           {/* ADMIN ROUTES */}
           <Route element={<AdminRouterProtection />}>
-            <Route path="/addmovie" element={<AddMovie />} />
+            <Route path="/addmovie" element={<AddMovie/>} />
             <Route path="/dashboard" element={<Dashboard />} />
             {/* <Route path="/Favorites" element={<FavoritesMovies />} />
             <Route path="/Favorites" element={<FavoritesMovies />} />
