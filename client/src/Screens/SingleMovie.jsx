@@ -6,6 +6,7 @@ import MovieInfo from '../Component/Single/MovieInfo'
 import MovieCasts from '../Component/Single/MovieCasts'
 import MovieRates from '../Component/Single/MovieRates'
 import TopRated from '../Component/Home/TopRated'
+
 function SingleMovie() {
   const {id}=useParams()
   const movie=Movies.find((movie)=>movie.name===id)

@@ -20,7 +20,8 @@ const importMovies=asyncHandler(async(req,res)=>{
 const getMovies= asyncHandler(async(req,res)=>{
     try {
         //filter movies bu category,time,language, rate, year and search
-        const {category,time,rate ,language,year,search}=req.body
+        const {category,time,rate ,language,year,search}=req.query
+        
         let query={
             ...(category && {category}),
             ...(time && {time}),
@@ -38,9 +39,11 @@ const getMovies= asyncHandler(async(req,res)=>{
         // find movies by query, skip and limit
 
         const movies=await Movie.find(query)
-        .sort({createdAt:-1})
         .skip(skip)
         .limit(limit)
+        // .sort({createdAt:-1})
+
+       
 
         //get total number of movies
         const count =await Movie.countDocuments(query)

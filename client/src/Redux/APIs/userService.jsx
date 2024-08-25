@@ -30,6 +30,8 @@ const logoutService=()=>{
     return null;
 }
 
+//******************PRIVATE APIs***********************/
+
 ///update profile Api call
 const updateProfileService=async (user,token)=>{
     const {data}=await Axios.put("/users",user,{
@@ -86,5 +88,11 @@ const deleteAllFsvoriteMovies= async(token)=>{
     })
     return data;
 }
+
+
+////******************ADMIN APIs***********************/
+
+
+
 
 export {registerService,loginService,logoutService,updateProfileService, deleteProfileService,changePasswordService,getFavoriteMoviesService,deleteAllFsvoriteMovies}

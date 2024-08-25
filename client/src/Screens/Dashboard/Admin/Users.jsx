@@ -1,7 +1,7 @@
 import React from "react";
-import Table2 from "../../../Components/Table2";
 import SideBar from "../Sidebar";
 import { UsersData } from "../../../Data/MovieData";
+import Table2 from "../../../Component/Table2";
 
 function Users() {
   return (

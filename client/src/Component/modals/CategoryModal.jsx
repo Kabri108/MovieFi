@@ -1,6 +1,6 @@
 import React from "react";
 import MainModal from "./MainModal";
-import { Input } from "../UsedInputs";
+import { Input } from "../UsedInput";
 
 function CategoryModal({ modalOpen, setModalOpen, category }) {
   return (

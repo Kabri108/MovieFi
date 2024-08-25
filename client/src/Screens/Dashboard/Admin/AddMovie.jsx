@@ -169,7 +169,8 @@ const deleteCastHandler=(id)=>{
               <p className="text-border font-semibold text-sm">
                 Image with Title
               </p>
-              <Uploder />
+              <Uploder setImageUrl={setimageTitle} />
+              <ImagePreview image={imageTitle} name="imageTitle"/>
               <div className="w-32 h-32 p-2 bg-main border border-border rounded">
                 <img
                   src="/images/movies/88.jpg"
@@ -180,13 +181,22 @@ const deleteCastHandler=(id)=>{
             </div>
           </div>
           {/* DESCRIPTION */}
+          <div className="w-full">
           <Message
             label="Movie Description"
             placeholder="Make it short and sweet"
+            name="desc"
+            register={{...register("desc")}}
           />
+          {errors.desc && <InlineError text={errors.desc.message} />}
+          </div>
           {/* CATEGORY */}
           <div className="text-sm w-full">
-            <Select label="Movie Category" options={CategoriesData} />
+            <Select label="Movie Category" options={categories.length>0 ?categories:[]}
+            name="category"
+            register={{...register("category")}}
+            />
+            {errors.category && <InlineError text={errors.category.message} />}
           </div>
           {/* MOVIE VIDEO */}
   
@@ -194,7 +204,16 @@ const deleteCastHandler=(id)=>{
             <label className="text-border font-semibold text-sm">
               Movie Video
             </label>
-            <Uploder />
+            <div className={`w-full grid ${videoUrl && "md:grid-cols-2"}gap-6`}>
+              {
+                videoUrl &&(
+                  <div className="w-full bg-main text-sm text-subMain py-4 border border-border rounded flex-col">
+                    Video Uploaded!!!
+                  </div>
+                )
+              }
+            <Uploder  setImageUrl={setvideoUrl}/>
+            </div>
           </div>
           {/* CASTS */}
           <div className="w-full grid lg:grid-cols-2 gap-6 items-start ">
@@ -235,7 +254,11 @@ const deleteCastHandler=(id)=>{
             </div>
           </div>
           {/* SUBMIT */}
-          <button className="bg-subMain w-full flex-rows gap-6 font-medium text-white py-4 rounded">
+          <button
+          onClick={
+            handleSubmit(onSubmit)
+          }
+          className="bg-subMain w-full flex-rows gap-6 font-medium text-white py-4 rounded">
             <ImUpload /> Publish Movie
           </button>
         </div>

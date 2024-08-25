@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import HomeScreen from './Screens/HomeScreen';
 import AboutUs from './Screens/AboutUs';
@@ -17,6 +17,12 @@ import ContactUs from './Screens/ContactUs';
 import { AdminRouterProtection, ProtectedRouter } from './ProtectedRouter';
 import AddMovie from './Screens/Dashboard/Admin/AddMovie';
 import Dashboard from './Screens/Dashboard/Admin/Dashboard';
+import DrawerContext from './Context/DrawerContext';
+import Categories from './Screens/Dashboard/Admin/Catagories';
+import Users from './Screens/Dashboard/Admin/Users';
+import { useDispatch } from 'react-redux';
+import { getAllCategoriesAction } from './Redux/Actions/CategoriesAction';
+import MoviesList from './Screens/Dashboard/Admin/MovieList';
 const App = () => {
   Aos.init();
 
@@ -26,15 +32,22 @@ const App = () => {
     // Logic to trigger toast notification
     setShowToasts(true);
   };
+const dispatch=useDispatch()
+useEffect(()=>{
+  dispatch(getAllCategoriesAction())
+},[dispatch])
+
   return (
     <>
       {showToast && <ToastContainer />}
+      <DrawerContext>
       <Routes>
         {/* Public routes */}
         <Route path="/" element={<HomeScreen />} />
         <Route path="/aboutUs" element={<AboutUs />} />
         <Route path="/contactUs" element={<ContactUs />} />
         <Route path="/movies" element={<MoviesPage />} />
+        <Route path="/movies/:search" element={<MoviesPage />} />
         <Route path="/movie/:id" element={<SingleMovie />} />
         <Route path="/watch/:id" element={<WatchPage />} />
         <Route path="*" element={<NotFound />} />
@@ -49,12 +62,15 @@ const App = () => {
           <Route element={<AdminRouterProtection />}>
             <Route path="/addmovie" element={<AddMovie/>} />
             <Route path="/dashboard" element={<Dashboard />} />
-            {/* <Route path="/Favorites" element={<FavoritesMovies />} />
-            <Route path="/Favorites" element={<FavoritesMovies />} />
-            <Route path="/Favorites" element={<FavoritesMovies />} /> */}
+            <Route path="/categories" element={<Categories />} />
+            <Route path="/users" element={<Users/>} />
+            <Route path="/categories" element={<Categories />} />
+            <Route path="/movieslist" element={<MoviesList />} />
+            
           </Route>
         </Route>
       </Routes>
+      </DrawerContext>
       {/* </ToastContainer> */}
     </>
   );

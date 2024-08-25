@@ -8,7 +8,7 @@ export const Movies = [
       language: 'Hindi',
       year: '2024',
       time: 2.5,
-      video: 'https://imdb-video.media-imdb.com/vi975881753/1434659607842-pgv4ql-1720195327111.mp4',
+      video: 'https://firebasestorage.googleapis.com/v0/b/moviefi-b51bf.appspot.com/o/ssvid.net%20-%20Kalki%202898%20AD%20%20Official%20Announcement%20%20%20Prabhas%20Deepika%20P%20Kamal%20H%20Amitabh%20B_1080p.mp4?alt=media&token=529b60fc-bd1c-4398-9870-ca6d44d23b6b',
       rate: 3,
     },
     {

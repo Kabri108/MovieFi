@@ -16,9 +16,13 @@ const rootReducer=combineReducers({
     
     // Category REducer
     categoryGetAll:categories.getAllCategoriesReducer,
+    categoryCreate:categories.createCategoryReducer,
+    categoryUpdate:categories.updateCategoryReducer,
+    categoryDelete:categories.deleteCategoryReducer,
 
 
     //Movies reducer
+    getAllMovies:movies.getALlMoviesReducer,
     createMovie:movies.createMovieReducer,
     castsDeleteEditAdd:movies.CastReducer,
 })
