@@ -23,6 +23,10 @@ const rootReducer=combineReducers({
 
     //Movies reducer
     getAllMovies:movies.getALlMoviesReducer,
+    getRandomeMovies:movies.moviesRandomReducer,
+    getMoviesById:movies.moviesDetailsReducer,
+    getTopRatedMovies:movies.moviesTopRatedReducer,
+
     createMovie:movies.createMovieReducer,
     castsDeleteEditAdd:movies.CastReducer,
 })

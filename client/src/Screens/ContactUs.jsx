@@ -12,7 +12,7 @@ function ContactUs() {
       title: 'Email Us',
       info: 'we are here for you help 24 hr',
       icon: FiMail,
-      contact: 'moviefi.com',
+      contact: 'sayantankabri108@gmail.com',
     },
     {
       id: 2,

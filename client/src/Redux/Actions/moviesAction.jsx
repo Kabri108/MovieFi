@@ -31,6 +31,41 @@ export const getAllMoviesAction =
     }
   };
 
+///get random movies action
+export const getRandomeMoviesAction=()=>async(dispatch)=>{
+  try {
+    dispatch({type:moviesConstants.MOVIE_RANDOM_REQUEST})
+    const responce=await moviesAPIs.getrandomeMovieServices();
+    dispatch({type:moviesConstants.MOVIE_RANDOM_SUCCESS,payload:responce})
+  } catch (error) {
+    ErrorAction(error,dispatch,moviesConstants.MOVIE_RANDOM_FAIL)
+  }
+}
+
+///get movies by id  action
+export const getMoviesByIdAction=(id)=>async(dispatch)=>{
+  try {
+    dispatch({type:moviesConstants.MOVIE_DETAILS_REQUEST})
+    const responce=await moviesAPIs.getMovieByIdServices(id);
+    dispatch({type:moviesConstants.MOVIE_DETAILS_SUCCESS,payload:responce})
+  } catch (error) {
+    ErrorAction(error,dispatch,moviesConstants.MOVIE_DETAILS_FAIL)
+  }
+}
+
+///get Top-Rated movies action
+export const getTopratedMoviesAction=()=>async(dispatch)=>{
+  try {
+    dispatch({type:moviesConstants.MOVIE_TOP_RATED_REQUEST})
+    const responce=await moviesAPIs.getTopRatedMovieServices();
+    dispatch({type:moviesConstants.MOVIE_TOP_RATED_SUCCESS,payload:responce})
+  } catch (error) {
+    ErrorAction(error,dispatch,moviesConstants.MOVIE_TOP_RATED_FAIL)
+  }
+}
+
+
+
 ///create movie action
 export const createMovieAction = (movie) => async (dispatch, getState) => {
   try {

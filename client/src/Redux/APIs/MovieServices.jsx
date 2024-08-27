@@ -12,6 +12,27 @@ export const getAllMoviesService=async(
     return data
 }
 
+//get random movies function
+export const getrandomeMovieServices=async()=>{
+    const{data}=await Axios.get(`/movies/random/all`);
+    return data;
+}
+
+//get random movies bu id
+export const getMovieByIdServices=async(id)=>{
+    const{data}=await Axios.get(`/movies/${id}`);
+    return data;
+}
+
+//get top movies bu id
+export const getTopRatedMovieServices=async()=>{
+    const{data}=await Axios.get(`/movies/rated/top`);
+    return data;
+}
+
+
+
+
 //create movie function 
 
 export const createMovieService= async(token,movie)=>{
@@ -22,3 +43,5 @@ export const createMovieService= async(token,movie)=>{
     })
     return data;
 }
+
+

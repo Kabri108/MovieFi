@@ -121,7 +121,7 @@ const datas={
             movies?.length > 0 ? (
               <>
                <div className="mt-6 sm:mt-10 grid xl:grid-cols-4 2xl:grid-cols-6 lg:grid-cols-5 sm:grid-cols-3 grid-cols-2 gap-4 ">
-          {movies.map((movie, index) => (
+          {movies?.map((movie, index) => (
             <Movie key={index} movie={movie} />
           ))}
         </div>
