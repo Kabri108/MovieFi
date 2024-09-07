@@ -30,10 +30,10 @@ const HomeScreen = () => {
     dispatch(getTopratedMoviesAction())
 
     //error
-    if(topError || randomError){
+    if(isError || topError || randomError){
       toast.error("Something went wrong!")
     }
-  },[dispatch,randomError,topError])
+  },[dispatch,randomError,topError,isError])
   
   return (
     <Layout>

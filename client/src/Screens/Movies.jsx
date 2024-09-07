@@ -14,7 +14,7 @@ import { useParams } from 'react-router-dom';
 function MoviesPage() {
   const {search}=useParams()
   const dispatch = useDispatch();
-  const [category, setCategory] = useState({ title: 'All categories' })
+  const [category, setCategory] = useState({ title: 'All Categories' })
   const [year, setYear] = useState(YearData[0])
   const [times, setTimes] = useState(TimesData[0])
   const [rates, setRates] = useState(RatesData[0])
