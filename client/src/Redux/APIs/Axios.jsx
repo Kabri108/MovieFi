@@ -1,7 +1,8 @@
 import axios from 'axios'
 
 const Axios=axios.create({
-    baseURL:'https://movie-fi.vercel.app/'||'http://localhost:5000/api',
+    // baseURL:'http://localhost:5000/api',
+    baseURL:'https://movie-fi.vercel.app'
 })
 
 export default Axios;
