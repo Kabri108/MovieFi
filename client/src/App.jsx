@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import HomeScreen from './Screens/HomeScreen';
 import AboutUs from './Screens/AboutUs';
@@ -20,58 +20,77 @@ import Dashboard from './Screens/Dashboard/Admin/Dashboard';
 import DrawerContext from './Context/DrawerContext';
 import Categories from './Screens/Dashboard/Admin/Catagories';
 import Users from './Screens/Dashboard/Admin/Users';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { getAllCategoriesAction } from './Redux/Actions/CategoriesAction';
 import MoviesList from './Screens/Dashboard/Admin/MovieList';
+import { getFavoriteMoviesAction } from './Redux/Actions/userActions';
+import toast from 'react-hot-toast';
+import { getAllMoviesAction } from './Redux/Actions/moviesAction';
+
 const App = () => {
   Aos.init();
+  
+  const dispatch = useDispatch();
+  const { userInfo } = useSelector((state) => state.userLogin);
+  const { isError, isSuccess } = useSelector((state) => state.userLikeMovie);
+  const { isError: catError } = useSelector((state) => state.categoryGetAll);
 
-  const [showToasts, setShowToasts] = useState(false); // Example state for toast container
+  useEffect(() => {
+    dispatch(getAllCategoriesAction());
+    dispatch(getAllMoviesAction());
+    
+    if (userInfo) {
+      dispatch(getFavoriteMoviesAction());
+    }
+    
+    if (isError) {
+      toast.error("Something went wrong with liking the movie.");
+      dispatch({ type: "LIKE_MOVIE_RESET" });
+    }
+    
+    if (catError) {
+      toast.error("Something went wrong with fetching categories.");
+    }
 
-  const showToast = () => {
-    // Logic to trigger toast notification
-    setShowToasts(true);
-  };
-const dispatch=useDispatch()
-useEffect(()=>{
-  dispatch(getAllCategoriesAction())
-},[dispatch])
+    if (isSuccess) {
+      dispatch({ type: "LIKE_MOVIE_RESET" });
+    }
+  }, [dispatch, userInfo, isError, catError, isSuccess]);
 
   return (
     <>
-      {showToast && <ToastContainer />}
+      <ToastContainer />
       <DrawerContext>
-      <Routes>
-        {/* Public routes */}
-        <Route path="/" element={<HomeScreen />} />
-        <Route path="/aboutUs" element={<AboutUs />} />
-        <Route path="/contactUs" element={<ContactUs />} />
-        <Route path="/movies" element={<MoviesPage />} />
-        <Route path="/movies/:search" element={<MoviesPage />} />
-        <Route path="/movie/:id" element={<SingleMovie />} />
-        <Route path="/watch/:id" element={<WatchPage />} />
-        <Route path="*" element={<NotFound />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        {/* PRIVATE PUBLIC ROUTES */}
-        <Route element={<ProtectedRouter />}>
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/Password" element={<Password />} />
-          <Route path="/Favorites" element={<FavoritesMovies />} />
-          {/* ADMIN ROUTES */}
-          <Route element={<AdminRouterProtection />}>
-            <Route path="/addmovie" element={<AddMovie/>} />
-            <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/categories" element={<Categories />} />
-            <Route path="/users" element={<Users/>} />
-            <Route path="/categories" element={<Categories />} />
-            <Route path="/movieslist" element={<MoviesList />} />
+        <Routes>
+          {/* Public routes */}
+          <Route path="/" element={<HomeScreen />} />
+          <Route path="/aboutUs" element={<AboutUs />} />
+          <Route path="/contactUs" element={<ContactUs />} />
+          <Route path="/movies" element={<MoviesPage />} />
+          <Route path="/movies/:search" element={<MoviesPage />} />
+          <Route path="/movie/:id" element={<SingleMovie />} />
+          <Route path="/watch/:id" element={<WatchPage />} />
+          <Route path="*" element={<NotFound />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          
+          {/* Private Routes */}
+          <Route element={<ProtectedRouter />}>
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/password" element={<Password />} />
+            <Route path="/favorites" element={<FavoritesMovies />} />
             
+            {/* Admin Routes */}
+            <Route element={<AdminRouterProtection />}>
+              <Route path="/addmovie" element={<AddMovie />} />
+              <Route path="/dashboard" element={<Dashboard />} />
+              <Route path="/categories" element={<Categories />} />
+              <Route path="/users" element={<Users />} />
+              <Route path="/movieslist" element={<MoviesList />} />
+            </Route>
           </Route>
-        </Route>
-      </Routes>
+        </Routes>
       </DrawerContext>
-      {/* </ToastContainer> */}
     </>
   );
 };

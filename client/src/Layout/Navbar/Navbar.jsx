@@ -11,6 +11,8 @@ const Navbar = () => {
   const hover = 'hover:text-subMain transitions t-white';
   const Hover = ({ isActive }) => (isActive ? 'text-subMain' : hover)
 
+  const{likedMovies}=useSelector((state)=>state.userGetFavoriteMovies)
+
 const handelSearch=(e)=>{
   e.preventDefault();
   if(search.trim()){
@@ -58,7 +60,7 @@ const handelSearch=(e)=>{
             <NavLink to="/favorites" className={`${Hover} relative`}>
             <FaHeart className='w-6 h-6 hover:subMain' />
               <div className='w-5 h-5 flex-colo rounded-full text-xs bg-subMain text-white absolute -top-5 -right-1'>
-                2
+              {likedMovies?.length}
               </div>
             </NavLink>
           </div>

@@ -4,19 +4,13 @@ import * as moviesAPIs from '../APIs/MovieServices';
 
 //get all movies action
 export const getAllMoviesAction =
-  ({
-    category = '',
-    time = '',
-    language = '',
-    rate = '',
-    year = '',
-    search = '',
-    pageNumber = '',
-  }) =>
+  (filters = {}) =>  // Ensure a default object
   async (dispatch) => {
     try {
       dispatch({ type: moviesConstants.MOVIE_LIST_REQUEST });
-      const responce = await moviesAPIs.getAllMoviesService(
+      const { category = '', time = '', language = '', rate = '', year = '', search = '', pageNumber = '' } = filters;
+
+      const response = await moviesAPIs.getAllMoviesService(
         category,
         time,
         language,
@@ -25,11 +19,13 @@ export const getAllMoviesAction =
         search,
         pageNumber
       );
-      dispatch({ type: moviesConstants.MOVIE_LIST_SUCCESS, payload: responce });
+
+      dispatch({ type: moviesConstants.MOVIE_LIST_SUCCESS, payload: response });
     } catch (error) {
       ErrorAction(error, dispatch, moviesConstants.MOVIE_LIST_FAIL);
     }
   };
+
 
 ///get random movies action
 export const getRandomeMoviesAction=()=>async(dispatch)=>{

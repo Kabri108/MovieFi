@@ -110,5 +110,26 @@ const deleteFavoriteMovieAction=()=>async(dispatch,getState)=>{
     }
 }
 
+//user like movi action 
 
-export {loginAction,logoutAction,registerAction,updateProfileAction,deleteProfileAction,changePasswordAction,getFavoriteMoviesAction,deleteFavoriteMovieAction}
+const likedMovieAction=(movieId)=>async(dispatch, getState)=>{
+    try {
+        dispatch({type:userConstants.LIKE_MOVIE_REQUEST})
+        const response =await userApi.likedMoviesService(
+            movieId,
+            tokenProtection(getState)
+        )
+        dispatch({
+            type:userConstants.LIKE_MOVIE_SUCCESS,
+            payload:response
+        })
+        toast.success("Movie added to your favorites")
+
+        dispatch(getFavoriteMoviesAction())
+    } catch (error) {
+        ErrorAction(error,dispatch,userConstants.LIKE_MOVIE_FAIL)
+    }
+}
+
+
+export {loginAction,logoutAction,registerAction,updateProfileAction,deleteProfileAction,changePasswordAction,getFavoriteMoviesAction,deleteFavoriteMovieAction,likedMovieAction}

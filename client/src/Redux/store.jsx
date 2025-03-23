@@ -13,7 +13,7 @@ const rootReducer=combineReducers({
     userChangepassword:User.userChangePasswordReducer,
     userGetFavoriteMovies:User.userGetFavoriteMoviesReducer,
     userDeleteFavoriteMovies:User.userDeleteFavoriteMoviesReducer,
-    
+    userLikeMovie:User.userLikedMovieReducer,
     // Category REducer
     categoryGetAll:categories.getAllCategoriesReducer,
     categoryCreate:categories.createCategoryReducer,

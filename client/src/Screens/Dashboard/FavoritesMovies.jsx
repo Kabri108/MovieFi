@@ -12,7 +12,6 @@ function FavoritesMovies() {
   const dispatch=useDispatch()
 
   const {isLoading,isError,likedMovies}=useSelector((state)=>state.userGetFavoriteMovies)
-
   //delete
   const {isLoading:deleteLoading,isError:deleteError,isSuccess}=useSelector((state)=>state.userDeleteFavoriteMovies)
 
